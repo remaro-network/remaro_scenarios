@@ -11,8 +11,7 @@ This repository belongs to different scenarios extracted from [REMARO worlds](ht
 
 - Install [ROS Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu).  Choose the "Desktop-Full Install" option so simulators are installed.
 
-- Once you have installed ros packages, the <b>uuv_simulator</b> can be installed by cloning the a modified version of `Field-Robotics-Lab_uuv_simulator` repository [here](https://github.com/mahyamkashani/uuv_simulator) in your ros workspace.
-
+Follow below commands:
 
 ```bash
 # Make directory for your workspace
@@ -20,6 +19,9 @@ mkdir -p ~/yourworkspacename/src
 
 # Change directory to your workspace
 cd ~/yourworkspacename/src
+
+# Clone UUV Simulator package (modified version of `Field-Robotics-Lab_uuv_simulator`)
+git clone https://github.com/mahyamkashani/uuv_simulator
 
 # Clone this package 
 git clone https://github.com/remaro-network/remaro_scenarios.git
