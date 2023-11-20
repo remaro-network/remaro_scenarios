@@ -1,0 +1,78 @@
+inertial_frame_id: world
+waypoints:
+  -
+    point: [0, 0, -18]
+    max_forward_speed: 0.5
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-5, 0, -18]
+    max_forward_speed: 0.5
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-9, 0, -18]
+    max_forward_speed: 0.5
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-11, 0, -18]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-11, -2, -18]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-11, -4, -18]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-13, -4, -18]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-13, -6, -18]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-13, -8, -18]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-15, -8, -17]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-17, -8, -17]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-20, -8, -17]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-23, -8, -17]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-25, -5, -17]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  -
+    point: [-25, -3, -17]
+    max_forward_speed: 0.2
+    heading: 0
+    use_fixed_heading: False
+  
