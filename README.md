@@ -8,6 +8,9 @@ General and typical path to inspect different subsea infrustructures
 [![Watch REMARO_AUV get out of docking station](assets/imgs/remaro_scenario.jpg)](assets/GIFs/docking_station.mp4)
 
 The safer path (alternative solution) exists to inspect the last vertical tank
+![Safe Path](assets/imgs/small_vertical_tank_population.jpg)
+
+We also use population of small vertical tank to make scenario more realistic; position of this object is based on random distribution. We populated 10 times for each run.
 ![Safe Path](assets/imgs/safe_path_remaro.jpg)
 
 ## Installation
@@ -15,7 +18,7 @@ The safer path (alternative solution) exists to inspect the last vertical tank
 
 - Install [ROS Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu).  Choose the "Desktop-Full Install" option so simulators are installed.
 
-- Once you have installed ros packages, the <b>uuv_simulator</b> can be installed by cloning the a modified version of `Field-Robotics-Lab_uuv_simulator` repository [here](https://github.com/mahyamkashani/uuv_simulator) in your ros workspace.
+- Once you have installed ros packages, the <b>uuv_simulator</b> can be installed by cloning the modified version of `Field-Robotics-Lab_uuv_simulator` repository [here](https://github.com/mahyamkashani/uuv_simulator) in your ros workspace.
 
 
 ```bash

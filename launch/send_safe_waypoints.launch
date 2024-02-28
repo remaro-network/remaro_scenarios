@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
     <arg name="path_points" default="$(find remaro_scenarios)/config"/>
     <arg name="waypoints"   default="$(arg path_points)/waypoints_bluerov_safe_path.yaml"/>
