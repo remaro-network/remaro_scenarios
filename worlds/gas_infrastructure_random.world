@@ -108,18 +108,18 @@ Based on https://github.com/uuvsimulator/uuv_simulator/tree/master/uuv_gazebo_wo
       <pose>-30 0 -20 0 0 0</pose>
     </include> -->
 
-     <population name="vertical_tank_quad">
-      <model name="vertical_tank_quad">
+     <population name="small_vertical_tank">
+      <model name="small_vertical_tank">
         <include>
           <uri>model://structures/small_vertical_tank</uri>
         </include>
       </model>
       <pose>-30 0 -20 0 0 0</pose>
       <cylinder>
-        <radius>0.5</radius>
-        <length>1.0</length>
+        <radius>1.0</radius>
+        <length>0.2</length>
       </cylinder>
-      <model_count>10</model_count>
+      <model_count>1</model_count>
       <distribution>
         <type>random</type>
       </distribution>
