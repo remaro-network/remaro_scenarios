@@ -1,10 +1,10 @@
 import rospy
-from geometry_msgs.msg import Point, PoseStamped
+from geometry_msgs.msg import PoseStamped
 from gazebo_msgs.msg import ModelStates
 from math import sqrt
 
 class MultipleObjectCollisionDetector:
-    def __init__(self, robot_name, object_names, safety_distance):
+    def __init__(self, robot_name, object_names, safety_distance, robot_topic):
         self.robot_name = robot_name
         self.robot_position = None
         self.object_names = object_names
@@ -13,8 +13,10 @@ class MultipleObjectCollisionDetector:
         self.safety_distance = safety_distance  # a safety distance threshold
         self.collision_distance = 3
         self.object_name = None
+        self.robot_topic = robot_topic
         # Subscribe to both the robot and object position topics
         self.model_states_subscriber = rospy.Subscriber("/gazebo/model_states", ModelStates, self.model_states_callback)
+        self.robot_subscriber = rospy.Subscriber(robot_topic, PoseStamped, self.robot_callback)
 
     def model_states_callback(self, data):
          # Find the indices of the robot and objects in the ModelStates message
@@ -27,18 +29,25 @@ class MultipleObjectCollisionDetector:
 
         # Check for each object if it is in collision zone with the robot
         robot_position = data.pose[self.robot_index].position
+        
         for index in self.object_indices:
             object_position = data.pose[index].position
             distance = sqrt((robot_position.x - object_position.x) ** 2 +
                             (robot_position.y - object_position.y) ** 2 +
                             (robot_position.z - object_position.z) ** 2)
+            
+            collision_time = self.robot_position.header.stamp.secs
+
             if distance < self.safety_distance:
                 distance = "%.4f"%(distance)
-                rospy.logwarn(f"Collision Warning: {data.name[index]} is within safety threshold of the robot at distance {distance}.")
+                rospy.logwarn(f"Collision Warning: {data.name[index]} is within safety threshold of the robot at distance {distance} at {collision_time} seconds.")
             else:
                 distance = "%.4f"%(distance)
-                rospy.loginfo(f"Distance between robot and {data.name[index]} : {distance}. No immediate collision risk.")
-
+                rospy.loginfo(f"Distance between robot and {data.name[index]} : {distance} at {collision_time} seconds. No immediate collision risk.")
+    
+    def robot_callback(self, data):
+        self.robot_position = data  
+        # self.model_states_callback()
 
 if __name__ == '__main__':
     rospy.init_node('multiple_objects_detector')
@@ -51,6 +60,7 @@ if __name__ == '__main__':
                     "shipping_container", "horizontal_tank_pair", \
                     "bluerov2"]  # Add all the objects you want to monitor
     safety_distance = 5.0  # Safety distance
-    detector = MultipleObjectCollisionDetector(robot_name, object_names, safety_distance)
+    robot_topic = "/ground_truth_to_tf_bluerov2/pose"  # robot position topic name
+    detector = MultipleObjectCollisionDetector(robot_name, object_names, safety_distance, robot_topic)
     rospy.spin()  # Keep the node running
 
