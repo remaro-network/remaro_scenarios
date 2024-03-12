@@ -25,6 +25,6 @@ for c_wp in wps_array:
     waypoints.add_waypoint(c_waypoint, add_to_beginning=False)
 
 rospack = rospkg.RosPack()
-wp_path = rospack.get_path("osl_simulator") + "/config/"
-wp_file = "waypoints.yaml"
+wp_path = rospack.get_path("remaro_scenarios") + "/config/"
+wp_file = "generated_waypoints.yaml"
 waypoints.export_to_file(wp_path, wp_file)
