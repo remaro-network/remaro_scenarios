@@ -81,6 +81,32 @@ If you would like generate new waypoints, you can run below python program:
 cd src
 python3 gen_waypoints.py
 ```
+#### Single/ Multiple Object Collision Detector
+
+If you would like to know whether there exist any collisions, follow below instruction:
+- open 3 TABs:
+```
+TAB1
+roscore
+```
+```
+TAB2 (play rosbag)
+rosbag play danger_2024-03-09-11-40-23.bag
+```
+```
+TAB3
+roscd remaro_scenarios
+cd src
+python3 collision_detector.py
+```
+or
+```
+TAB3
+roscd remaro_scenarios
+cd src
+python3 multiple_objects_collision_detector.py
+```
+
 ## Acknowledgements
 This project has received funding from the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No. 956200.
 
