@@ -10,6 +10,7 @@ class DistanceCalculator:
         self.object_position_y = None
         self.object_position_z = None
         self.safety_distance = 3  # Define a safety distance threshold
+        self.object_name = None
 
 
         # Subscribe to both the robot and object position topics
@@ -29,7 +30,8 @@ class DistanceCalculator:
             self.object_position_y = data.pose[i].position.y
             self.object_position_z = data.pose[i].position.z
             # print(f"Position: {data.pose[i].position}")
-            if name == "small_vertical_tank": #small_vertical_tank, bluerov2
+            if name == "large_vertical_tank": #small_vertical_tank, bluerov2
+                self.object_name = name
                 print("Object name: {}".format(name))
                 self.calculate_and_log_distance()
                 break
@@ -46,7 +48,7 @@ class DistanceCalculator:
                 rospy.logwarn(f"Collision Warning: Distance ({distance} units) is below safety threshold.")
             else:
                 distance = "%.4f"%(distance)
-                rospy.loginfo(f"Distance between robot and object: {distance} units. No immediate collision risk.")
+                rospy.loginfo(f"Distance between robot and {self.object_name}: {distance} units. No immediate collision risk.")
 
 if __name__ == '__main__':
     rospy.init_node('distance_calculator_node')
