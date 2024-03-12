@@ -1,8 +1,10 @@
+<?xml version="1.0"?>
+
 <launch>
 
     <arg name="unpause_timeout" default="3"/>
     <!-- <arg name="world" default="worlds/gas_infrastructure.world"/> -->
-    <arg name="world" default="$(find remaro_scenarios)/worlds/gas_infrastructure.world"/>
+    <arg name="world" default="$(find remaro_scenarios)/worlds/gas_infrastructure_random.world"/>
 
     <!-- Start the launch file with record:=false if it is not being used by the optimizer -->
     <arg name="record" default="false"/>
@@ -29,6 +31,7 @@
     <arg name="z" default="-13"/>
     <arg name="yaw" default="0"/>
 
+
     <!-- Start spawning vehicle and take control -->
     <include file="$(find bluerov2_gazebo)/launch/start_pid_controller_demo.launch">
         <arg name="teleop_on" value="true"/>
@@ -52,6 +55,8 @@
         <arg name="duration" default="0"/>
         <arg name="max_forward_speed" value="0.9"/>
     </include>
+
+--> 
 
      <!-- <include file="$(find remaro_auv_description)/launch/upload.launch">
         <arg name="x" default="-1"/>
