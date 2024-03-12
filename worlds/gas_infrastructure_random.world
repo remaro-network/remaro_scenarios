@@ -3,7 +3,7 @@
 Based on https://github.com/uuvsimulator/uuv_simulator/tree/master/uuv_gazebo_worlds
 -->
 <sdf version="1.4">
-  <world name="small_pipeline_world">
+  <world name="small_infrastructure_world">
     <physics name="default_physics" default="true" type="ode">
       <max_step_size>0.01</max_step_size>
       <real_time_factor>1</real_time_factor>

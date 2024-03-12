@@ -69,8 +69,17 @@ chmod +x run_safe_scenario.sh
 ```
 
 #### Record Scenario
+In case you couldn't install requirements, there exist a few rosbags and csv files for positions of robot and objects' location.
+
+If you would like to record specific rostopics, see follows instruction
 ```
-rosbag record bagfile.bag
+rosbag record bagfile.bag /rostopic-you-would-like
+```
+
+If you would like generate new waypoints, you can run below python program:
+```
+cd src
+python3 gen_waypoints.py
 ```
 ## Acknowledgements
 This project has received funding from the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No. 956200.
