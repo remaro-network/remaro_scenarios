@@ -2,13 +2,28 @@ import random
 import timeit
 import subprocess
 import os
+from multiple_objects_collision_detector import MultipleObjectCollisionDetector
+import rospy
 
 def average_py(n):
-    """Calculate the average of n random numbers."""
+    """Calculate the average of n times execution of program."""
     s = 0
-    subprocess.call(['./run_dangerous_scenario.sh'])
     for i in range(n):
-        s += random.random()
+        '''
+        rospy.init_node('multiple_objects_detector')
+        # robot_topic = "/ground_truth_to_tf_bluerov2/pose"  # robot position topic name
+        # object_topic = "/gazebo/model_states/"  # object position topic name
+        robot_name = "bluerov2"
+        object_names = ["small_vertical_tank_clone_0", "large_vertical_tank_clone", \
+                    "vertical_tank_quad", "platform", "large_vertical_tank" \
+                    "rust_pipe", "oil_drum_clone_0", \
+                    "shipping_container", "horizontal_tank_pair", \
+                    "bluerov2"]  # Add all the objects you want to monitor
+        safety_distance = 5.0  # Safety distance
+        robot_topic = "/ground_truth_to_tf_bluerov2/pose"  # robot position topic name
+        detector = MultipleObjectCollisionDetector(robot_name, object_names, safety_distance, robot_topic)
+        rospy.spin()  # Keep the node running
+         '''
     return s / n
 
 n = 10_000_000
@@ -41,7 +56,7 @@ def run_timing_test(func_name, n, iterations=1):
     return times
 
 # Using the function name as a string when calling the run_timing_test function
-times = run_timing_test('average_py', n, 1)
+times = run_timing_test('average_py', n, 10)
 
 # Calculating the standard deviation of the times
 std_dev = np.std(times)
