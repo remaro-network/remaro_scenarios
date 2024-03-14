@@ -84,24 +84,27 @@ python3 gen_waypoints.py
 #### Single/ Multiple Object Collision Detector
 
 If you would like to know whether there exist any collisions, follow below instruction:
-- open 3 TABs:
+- open 3 TABs as follows:
+
+<b>TAB1</b>
 ```
-TAB1
 roscore
 ```
+<b>TAB2 (play rosbag)</b>
 ```
 TAB2 (play rosbag)
 rosbag play danger_2024-03-09-11-40-23.bag
 ```
+<b>TAB3</b>
 ```
-TAB3
 roscd remaro_scenarios
 cd src
 python3 collision_detector.py
 ```
 or
+
+<b>TAB3</b>
 ```
-TAB3
 roscd remaro_scenarios
 cd src
 python3 multiple_objects_collision_detector.py
