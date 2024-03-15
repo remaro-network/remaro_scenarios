@@ -196,11 +196,11 @@ Based on https://github.com/uuvsimulator/uuv_simulator/tree/master/uuv_gazebo_wo
       <constant_current>
         <topic>current_velocity</topic>
         <velocity>
-          <mean>0</mean>
+          <mean>0.5</mean>
           <min>0</min>
           <max>5</max>
-          <mu>0.0</mu>
-          <noiseAmp>0.0</noiseAmp>
+          <mu>0.5</mu>
+          <noiseAmp>0.5</noiseAmp>
         </velocity>
 
         <horizontal_angle>
