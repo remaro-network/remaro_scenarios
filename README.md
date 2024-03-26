@@ -134,6 +134,7 @@ python3 gen_waypoints.py
 ```
 #### Single/ Multiple Object Collision Detector
 
+
 If you would like to know whether there exist any collisions, open 3 TABs and follow below commands.
 
 - TAB1
