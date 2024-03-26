@@ -59,7 +59,7 @@ if __name__ == '__main__':
     robot_name = "bluerov2"
     object_names = ["small_vertical_tank_clone_0", "large_vertical_tank_clone", \
                     "vertical_tank_quad", "platform", "large_vertical_tank" \
-                    "rust_pipe", "oil_drum_clone_0", \
+                    "oil_drum_clone_0", \
                     "shipping_container", "horizontal_tank_pair", \
                     "bluerov2"]  # Add all the objects you want to monitor
     safety_distance = 10.0  # Safety distance

@@ -25,8 +25,3 @@ waypoints:
     max_forward_speed: 1.5
     heading: 0
     use_fixed_heading: False
-  -
-    point: [0, 12, -18]
-    max_forward_speed: 1.5
-    heading: 0
-    use_fixed_heading: False

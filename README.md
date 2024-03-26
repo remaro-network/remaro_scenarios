@@ -2,7 +2,7 @@
 
 This repository belongs to different scenarios extracted from [REMARO worlds](https://github.com/remaro-network/remaro_worlds)
 
-## ScreenShot
+## ScreenShots
 General and typical path to inspect different subsea infrustructures
 
 [![Watch REMARO_AUV get out of docking station](assets/imgs/remaro_scenario.jpg)](assets/GIFs/docking_station.mp4)
@@ -52,21 +52,72 @@ source ~/yourworkspacename/devel/setup.bash
 echo "source ~/yourworkspacename/devel/setup.bash" >> ~/.bashrc
 ```
 
-## Usage
-You can open terminal and type below command.
+## planSimulation
+You can simulate different plans, e.g. $P_1, P_2, ..., P_5$ by typing below commands:
 
-#### Dangerous Scenario
+#### Dangerous Scenario ($P_1$)
+
 ```bash
 # To launch the simulated world
 chmod +x run_dangerous_scenario.sh
 ./run_dangerous_scenario.sh
 ```
-#### Safe Scenario
+or 
 ```bash
 # To launch the simulated world
+roslaunch remaro_scenarios launch_remaro_scenario.launch
+roslaunch remaro_scenarios send_dangerous_waypoints.launch
+roslaunch remaro_scenarios launch_small_vertical_tank_inspection.launch
+```
+#### Run out of battery Scenario ($P_2$)
+
+```bash
+# To launch the simulated world
+roslaunch remaro_scenarios launch_remaro_scenario.launch
+roslaunch remaro_scenarios send_battery_waypoints.launch
+roslaunch remaro_scenarios send_platform_waypoints.launch
+roslaunch remaro_scenarios send_dangerous_waypoints.launch
+roslaunch remaro_scenarios launch_small_vertical_tank_inspection.launch
+
+```
+
+#### Other1 Scenario ($P_3$): long path but dangerous
+```bash
+# To launch the simulated world
+roslaunch remaro_scenarios launch_remaro_scenario.launch
+roslaunch remaro_scenarios send_battery_waypoints.launch
+roslaunch remaro_scenarios send_back_init_waypoints.launch
+roslaunch remaro_scenarios send_platform_waypoints.launch
+roslaunch remaro_scenarios send_dangerous_waypoints.launch
+roslaunch remaro_scenarios launch_small_vertical_tank_inspection.launch
+```
+
+#### Safe Scenario ($P_4$)
+```bash
+# To run the simulated world
 chmod +x run_safe_scenario.sh
 ./run_safe_scenario.sh
 ```
+or 
+```bash
+# To launch the simulated world
+roslaunch remaro_scenarios launch_remaro_scenario.launch
+roslaunch remaro_scenarios send_safe_waypoints.launch
+roslaunch remaro_scenarios launch_small_vertical_tank_inspection.launch
+
+```
+#### Other2 Scenario($P_5$): other long path but dangerous
+```bash
+# To launch the simulated world
+roslaunch remaro_scenarios launch_remaro_scenario.launch
+roslaunch remaro_scenarios send_battery_waypoints.launch
+roslaunch remaro_scenarios send_back_init_waypoints.launch
+roslaunch remaro_scenarios send_dangerous_waypoints.launch
+roslaunch remaro_scenarios launch_small_vertical_tank_inspection.launch
+
+```
+
+
 
 #### Record Scenario
 In case you couldn't install requirements, there exist a few rosbags and csv files for positions of robot and objects' location.
@@ -83,25 +134,24 @@ python3 gen_waypoints.py
 ```
 #### Single/ Multiple Object Collision Detector
 
-If you would like to know whether there exist any collisions, follow below instruction:
-- open 3 TABs:
+If you would like to know whether there exist any collisions, open 3 TABs and follow below commands.
+
+- TAB1
 ```
-TAB1
 roscore
 ```
+- TAB2 (play rosbag)
 ```
-TAB2 (play rosbag)
 rosbag play danger_2024-03-09-11-40-23.bag
 ```
+- TAB3
 ```
-TAB3
 roscd remaro_scenarios
 cd src
 python3 collision_detector.py
 ```
-or
+- or TAB3
 ```
-TAB3
 roscd remaro_scenarios
 cd src
 python3 multiple_objects_collision_detector.py

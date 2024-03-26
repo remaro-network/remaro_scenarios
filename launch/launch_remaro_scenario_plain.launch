@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
+
 <launch>
 
     <arg name="unpause_timeout" default="3"/>
     <!-- <arg name="world" default="worlds/gas_infrastructure.world"/> -->
-    <arg name="world" default="$(find remaro_scenarios)/worlds/gas_infrastructure.world"/>
+    <arg name="world" default="$(find remaro_scenarios)/worlds/gas_infrastructure_random.world"/>
 
     <!-- Start the launch file with record:=false if it is not being used by the optimizer -->
     <arg name="record" default="false"/>
@@ -11,7 +12,7 @@
     
     <!-- Setup for a timeout for the simulation run -->
     <arg name="set_timeout" default="false"/>
-    <arg name="timeout" default="300"/>
+    <arg name="timeout" default="400"/>
 
     <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -25,13 +26,13 @@
     </include>
 
     <!-- Vehicle's initial position -->
-    <arg name="x" default="15"/>
-    <arg name="y" default="0"/>
-    <arg name="z" default="-16"/>
+    <arg name="x" default="12"/>
+    <arg name="y" default="5"/>
+    <arg name="z" default="-18"/>
     <arg name="yaw" default="0"/>
 
-<!--
-     Start spawning vehicle and take control 
+
+    <!-- Start spawning vehicle and take control -->
     <include file="$(find bluerov2_gazebo)/launch/start_pid_controller_demo.launch">
         <arg name="teleop_on" value="true"/>
         <arg name="x" default="$(arg x)"/>
@@ -40,7 +41,7 @@
         <arg name="yaw" default="$(arg yaw)"/>
     </include> 
     
-     Start executing helical trajectory
+    <!-- Start executing helical trajectory
     <include file="$(find uuv_control_utils)/launch/start_helical_trajectory.launch">
         <arg name="uuv_name" value="bluerov2"/>
         <arg name="radius" value="4"/>
@@ -53,8 +54,9 @@
         <arg name="heading_offset" default="0"/>
         <arg name="duration" default="0"/>
         <arg name="max_forward_speed" value="0.9"/>
-    </include>
--->
+    </include> -->
+
+
      <!-- <include file="$(find remaro_auv_description)/launch/upload.launch">
         <arg name="x" default="-1"/>
         <arg name="y" default="-20"/>
@@ -75,5 +77,5 @@
         "
         if="$(arg record)"/> -->
 
- 
+  <!--  <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find bluerov2_control)/rviz/bluerov2_control.rviz"/> -->
 </launch>

@@ -87,7 +87,7 @@ Based on https://github.com/uuvsimulator/uuv_simulator/tree/master/uuv_gazebo_wo
     <include>
       <name>horizontal_tank_pair</name>
       <uri>model://structures/horizontal_tank_pair</uri>
-      <pose>3.72 13.92 -20 0 0 -1.57</pose>
+      <pose>0 20 -20 0 0 -1.57</pose>
     </include>
 
     <include>
@@ -99,7 +99,7 @@ Based on https://github.com/uuvsimulator/uuv_simulator/tree/master/uuv_gazebo_wo
     <include>
       <name>platform</name>
       <uri>model://structures/platform</uri>
-      <pose>5.54 -10.58 -19 0 0 0</pose>
+      <pose>0 -20 -19 0 0 0</pose>
     </include>
 
     <!-- <include>
@@ -139,7 +139,7 @@ Based on https://github.com/uuvsimulator/uuv_simulator/tree/master/uuv_gazebo_wo
 
     <!-- <population name="vertical_tank_quad">
       <model name="vertical_tank_quad">
-        <include>worlds/gas_infrastructure_random.world
+        <include>
           <uri>model://structures/vertical_tank_quad</uri>
         </include>
       </model>
@@ -160,15 +160,15 @@ Based on https://github.com/uuvsimulator/uuv_simulator/tree/master/uuv_gazebo_wo
       <pose>-15.55 9.77 -19.9 4.6 0.7 -0.7</pose>
     </include>
 
-      <!-- <include>
+      <include>
       <uri>model://rust_pipe</uri>
       <pose>15.55 9.77 -18 0.0 0.0 3.14</pose>
-    </include> -->
+    </include>
 
-     <!-- <include>
+     <include>
       <uri>model://industrial_pipes/Industrial_Pipes</uri>
       <pose>14.55 9.77 -18 0.0 0.0 3.14</pose>
-    </include> -->
+    </include>
   
      
     <population name="oil_drum_population">
@@ -207,7 +207,7 @@ Based on https://github.com/uuvsimulator/uuv_simulator/tree/master/uuv_gazebo_wo
           <mean>0</mean>
           <min>-3.141592653589793238</min>
           <max>3.141592653589793238</max>
-          <mu>0.5</mu>
+          <mu>0.0</mu>
           <noiseAmp>0.0</noiseAmp>
         </horizontal_angle>
 

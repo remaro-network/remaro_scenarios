@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="path_points" default="$(find remaro_scenarios)/config"/>
-    <arg name="waypoints"   default="$(arg path_points)/waypoints_bluerov_back_init_path.yaml"/>
+    <arg name="waypoints"   default="$(arg path_points)/waypoints_bluerov_battery_path.yaml"/>
     <arg name="uuv_name"    default="bluerov2"/>
 
     <include file="$(find uuv_control_utils)/launch/send_waypoints_file.launch">
