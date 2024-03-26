@@ -14,6 +14,8 @@ class MultipleObjectCollisionDetector:
         self.collision_distance = 3
         self.object_name = None
         self.robot_topic = robot_topic
+        self.count_potential_collision = 0
+        self.real_time = 0
         # Subscribe to both the robot and object position topics
         self.model_states_subscriber = rospy.Subscriber("/gazebo/model_states", ModelStates, self.model_states_callback)
         self.robot_subscriber = rospy.Subscriber(robot_topic, PoseStamped, self.robot_callback)
@@ -30,6 +32,7 @@ class MultipleObjectCollisionDetector:
         # Check for each object if it is in collision zone with the robot
         robot_position = data.pose[self.robot_index].position
         
+
         for index in self.object_indices:
             object_position = data.pose[index].position
             distance = sqrt((robot_position.x - object_position.x) ** 2 +
@@ -41,12 +44,18 @@ class MultipleObjectCollisionDetector:
             if distance < self.safety_distance:
                 distance = "%.4f"%(distance)
                 rospy.logwarn(f"Collision Warning: {data.name[index]} is within safety threshold of the robot at distance {distance} at {collision_time} seconds.")
+                self.count_potential_collision += 1
+                f.write(f"Collision Warning: {data.name[index]} is within safety threshold of the robot at distance {distance} at {collision_time} seconds." + "\n")
+               
             else:
                 distance = "%.4f"%(distance)
                 rospy.loginfo(f"Distance between robot and {data.name[index]} : {distance} at {collision_time} seconds. No immediate collision risk.")
+        
+        f.write(f"#potential collisions are: " + str(self.count_potential_collision) + "\n")
     
     def robot_callback(self, data):
         self.robot_position = data  
+        f.write(str(self.robot_position.pose.position) + "\n" + "----------------" + "\n")
         # self.model_states_callback()
 
 if __name__ == '__main__':
@@ -62,5 +71,6 @@ if __name__ == '__main__':
     safety_distance = 5.0  # Safety distance
     robot_topic = "/ground_truth_to_tf_bluerov2/pose"  # robot position topic name
     detector = MultipleObjectCollisionDetector(robot_name, object_names, safety_distance, robot_topic)
-    rospy.spin()  # Keep the node running
+    with open('test_csv.txt', 'w') as f:
+        rospy.spin()  # Keep the node running
 
